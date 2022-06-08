@@ -15,6 +15,7 @@ jobs:
         wine_branch:
           - stable
           - devel
+          - arm64
         wine_arch:
           - win32
           - win64
@@ -71,15 +72,15 @@ jobs:
         with:
           cond: ${{ matrix.wine_branch == 'stable' && matrix.wine_arch == 'win32' }}
           if_true:
-            nyamisty/docker-wine-dotnet:${{ matrix.wine_arch }},
-            nyamisty/docker-wine-dotnet:${{ matrix.wine_arch }}-${{ matrix.wine_branch }},
-            nyamisty/docker-wine-dotnet:${{ matrix.wine_arch }}-${{ matrix.wine_branch }}-${{ steps.wine_ver.outputs.value }},
-            nyamisty/docker-wine-dotnet:${{ matrix.wine_arch }}-${{ matrix.wine_branch }}-${{ steps.wine_ver.outputs.value }}-${{ steps.timestamp.outputs.value }}
+            appelboomhd/docker-wine-dotnet:${{ matrix.wine_arch }},
+            appelboomhd/docker-wine-dotnet:${{ matrix.wine_arch }}-${{ matrix.wine_branch }},
+            appelboomhd/docker-wine-dotnet:${{ matrix.wine_arch }}-${{ matrix.wine_branch }}-${{ steps.wine_ver.outputs.value }},
+            appelboomhd/docker-wine-dotnet:${{ matrix.wine_arch }}-${{ matrix.wine_branch }}-${{ steps.wine_ver.outputs.value }}-${{ steps.timestamp.outputs.value }}
           if_false:
-            nyamisty/docker-wine-dotnet:${{ matrix.wine_arch }},
-            nyamisty/docker-wine-dotnet:${{ matrix.wine_arch }}-${{ matrix.wine_branch }},
-            nyamisty/docker-wine-dotnet:${{ matrix.wine_arch }}-${{ matrix.wine_branch }}-${{ steps.wine_ver.outputs.value }},
-            nyamisty/docker-wine-dotnet:${{ matrix.wine_arch }}-${{ matrix.wine_branch }}-${{ steps.wine_ver.outputs.value }}-${{ steps.timestamp.outputs.value }}
+            appelboomhd/docker-wine-dotnet:${{ matrix.wine_arch }},
+            appelboomhd/docker-wine-dotnet:${{ matrix.wine_arch }}-${{ matrix.wine_branch }},
+            appelboomhd/docker-wine-dotnet:${{ matrix.wine_arch }}-${{ matrix.wine_branch }}-${{ steps.wine_ver.outputs.value }},
+            appelboomhd/docker-wine-dotnet:${{ matrix.wine_arch }}-${{ matrix.wine_branch }}-${{ steps.wine_ver.outputs.value }}-${{ steps.timestamp.outputs.value }}
       -       
         name: Set up Docker Buildx
         id: buildx
